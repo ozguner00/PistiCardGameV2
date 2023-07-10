@@ -37,12 +37,14 @@ public class Game {
             gameDeck.shuffleDeck();
             gameDeck.printDeck(); // control
             raund(dealerPlayer);
-            //dealerPlayer = !dealerPlayer;
+            //dealerPlayer = !dealerPlayer; // dealer computer sonra yazılacak.
         }
     }
 
     public void raund(boolean dealerPlayer){
         System.out.println("*****************ROUND BAŞLADI*******************");
+        System.out.println(player.getName() + " Score :" + player.getScore());
+        System.out.println("Computer Score :" + computer.getScore());
         dealerHand(gameTable.getHand());
         gameTable.getHand().printHand();
         System.out.println("---------------------------------------");
@@ -51,13 +53,24 @@ public class Game {
         }else{
             raundComputer();
         }
-        player.setScore(player.getScore()+20);
+        System.out.println("El bitti puan hesaplanacak.");
+        System.out.println(playerLastWin);
+        if(playerLastWin){
+            GameHelper.winDeckFillandClear(gameTable.getDeck(),player.getDeck());
+        }else{
+            GameHelper.winDeckFillandClear(gameTable.getDeck(),computer.getDeck());
+        }
+        player.setScore(player.getScore()+GameHelper.scoreCal(player.getDeck()));
+        computer.setScore(computer.getScore()+GameHelper.scoreCal(computer.getDeck()));
+        player.getDeck().getDeck().clear();
+        computer.getDeck().getDeck().clear();
+
+        System.out.println("ROUND BİTTİ GÜNCEL PUANLAR:" +player.getName() + player.getScore() + " Compıter :"+  computer.getScore());
     }
 
-    public void raundComputer(){
+    public void raundComputer(){ // dealer computer sonra yazılacak.
 
     }
-
 
 
     public void raundPlayer(){
@@ -75,7 +88,9 @@ public class Game {
                         try{
                             System.out.println("Seçilen kart : " + player.getHand().getCard(selectCardPlayer));
                             gameTable.getDeck().addCard(player.getHand().getCard(selectCardPlayer));
-                            GameHelper.winCheck(gameTable.getDeck(),player.getHand().getCard(selectCardPlayer), gameTable.getHand(),player);
+                            if(GameHelper.winCheck(gameTable.getDeck(),player.getHand().getCard(selectCardPlayer), gameTable.getHand(),player)){
+                                playerLastWin = true;
+                            }
                             player.getHand().removeCard(selectCardPlayer);
                             break;
                         }catch (Exception e){
@@ -84,7 +99,9 @@ public class Game {
                     }
                     System.out.println("Seçilen kart : " + computer.getHand().getCard(selectCardComputer));
                     gameTable.getDeck().addCard(computer.getHand().getCard(selectCardComputer));
-                    GameHelper.winCheck(gameTable.getDeck(),computer.getHand().getCard(selectCardComputer), gameTable.getHand(),computer);
+                    if(GameHelper.winCheck(gameTable.getDeck(),computer.getHand().getCard(selectCardComputer), gameTable.getHand(),computer)){
+                        playerLastWin = false;
+                    }
                     computer.getHand().removeCard(selectCardComputer);
 
                 }
