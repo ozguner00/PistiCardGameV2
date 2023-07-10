@@ -37,4 +37,12 @@ public class Deck {
     public void printDeck(){
         System.out.println(deck);
     }
+
+    public int deckSize(){
+        return this.deck.size();
+    }
+
+    public void addCard(int card){
+        deck.add(card);
+    }
 }

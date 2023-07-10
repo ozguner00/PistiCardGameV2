@@ -13,4 +13,20 @@ public class Hand {
     public void addCard(int card) {
         hand.add(card);
     }
+
+    public void removeCard(int cardIndex){
+        hand.remove(cardIndex);
+    }
+
+    public int getCard(int cardIndex){
+        return this.hand.get(cardIndex);
+    }
+
+    public ArrayList<Integer> getHand() {
+        return hand;
+    }
+
+    public void setHand(ArrayList<Integer> hand) {
+        this.hand = hand;
+    }
 }

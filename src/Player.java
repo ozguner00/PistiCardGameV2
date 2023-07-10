@@ -25,5 +25,19 @@ public class Player {
         this.score = score;
     }
 
+    public Deck getDeck() {
+        return deck;
+    }
 
+    public void setDeck(Deck deck) {
+        this.deck = deck;
+    }
+
+    public Hand getHand() {
+        return hand;
+    }
+
+    public void setHand(Hand hand) {
+        this.hand = hand;
+    }
 }
