@@ -29,19 +29,8 @@ public class Player {
         return deck;
     }
 
-    public void setDeck(Deck deck) {
-        this.deck = deck;
-    }
-
     public Hand getHand() {
         return hand;
     }
 
-    public void setHand(Hand hand) {
-        this.hand = hand;
-    }
-
-    public String getName() {
-        return name;
-    }
 }

@@ -1,7 +1,4 @@
 public class GameHelper {
-    public static void printHand(Hand hand){
-
-    }
 
     public static boolean checkWinner(int playerScore, int computerScore, int scoreLimit){
         if(playerScore > scoreLimit && playerScore > computerScore){
@@ -43,24 +40,24 @@ public class GameHelper {
     }
 
     public static void winDeckFillandClear(Deck tableDeck, Deck winDeck, Hand tableHand){
-        System.out.println("WİN DECK :" ); winDeck.printDeck();
-        System.out.println("TABLE HAND :"); tableHand.printHand();
-        System.out.println("TABLE DECK : "); tableDeck.printDeck();
+        //System.out.println("WİN DECK :" ); winDeck.printDeck();
+        //System.out.println("TABLE HAND :"); tableHand.printHand();
+        //System.out.println("TABLE DECK : "); tableDeck.printDeck();
         winDeck.getDeck().addAll(tableDeck.getDeck());
         winDeck.getDeck().addAll(tableHand.getHand());
         tableDeck.getDeck().clear();
         tableHand.getHand().clear();
-        System.out.println("WİN DECK :" ); winDeck.printDeck();
-        System.out.println("TABLE HAND :"); tableHand.printHand();
-        System.out.println("TABLE DECK : "); tableDeck.printDeck();
+        //System.out.println("WİN DECK :" ); winDeck.printDeck();
+        //System.out.println("TABLE HAND :"); tableHand.printHand();
+        //System.out.println("TABLE DECK : "); tableDeck.printDeck();
     }
     public static void winDeckFillandClear(Deck tableDeck, Deck winDeck){
-        System.out.println("WİN DECK :" ); winDeck.printDeck();
-        System.out.println("TABLE DECK : "); tableDeck.printDeck();
+        //System.out.println("WİN DECK :" ); winDeck.printDeck();
+        //System.out.println("TABLE DECK : "); tableDeck.printDeck();
         winDeck.getDeck().addAll(tableDeck.getDeck());
         tableDeck.getDeck().clear();
-        System.out.println("WİN DECK :" ); winDeck.printDeck();
-        System.out.println("TABLE DECK : "); tableDeck.printDeck();
+        //System.out.println("WİN DECK :" ); winDeck.printDeck();
+        //System.out.println("TABLE DECK : "); tableDeck.printDeck();
     }
 
     public static int scoreCal(Deck deck){

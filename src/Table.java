@@ -6,15 +6,8 @@ public class Table {
         return deck;
     }
 
-    public void setDeck(Deck deck) {
-        this.deck = deck;
-    }
-
     public Hand getHand() {
         return hand;
     }
 
-    public void setHand(Hand hand) {
-        this.hand = hand;
-    }
 }

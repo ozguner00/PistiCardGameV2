@@ -3,7 +3,7 @@ public class Computer extends Player{
     private String name = "Computer";
     private Deck deck = new Deck();
     private Hand hand = new Hand();
-    private int scoreLimit;
+
    /* private List<Integer> probabilityList = new ArrayList<Integer>();
     private HashMap<Integer,Double> probabilityMap= new HashMap<Integer,Double>();
     private Deck wiewDeck = new Deck(); //probability
@@ -30,15 +30,12 @@ public class Computer extends Player{
         return deck;
     }
 
-    public void setDeck(Deck deck) {
-        this.deck = deck;
-    }
-
     public Hand getHand() {
         return hand;
     }
 
-    public void setHand(Hand hand) {
-        this.hand = hand;
+    public int computerSelectCardIndex(){
+
+        return 0;
     }
 }

@@ -10,9 +10,7 @@ public class Game {
     private boolean playerLastWin = true; // yerdeki son kağıdı kim aldı.
     private int dealerCounter; // round bitişi ve kart dağıtımında kullanılabilir.
     private boolean dealerPlayer = true;
-    private boolean isPisti = false; // Rounda ilk başlangıç yerdeki kağıtların hesabı için ilk kart atıldığında yere true döner.
-    //ilk 3 kart table hand 4. kart table deck. pisti check table deck size == 2 and isStart == true kontrolü. ilk kart pişti olmaz kapalı kağıtlardan dolayı.P
-    private int selectCardComputer = 0;
+    private int selectCardComputer;
     private int selectCardPlayer;
     private Scanner sc = new Scanner(System.in);
 
@@ -25,14 +23,11 @@ public class Game {
         this.computer = new Computer();
         this.gameDeck = new Deck("GameDeck");
         System.out.println("Oyun Başarıyla Oluşturuldu.Game Limit:" + scoreLimit);
-        player.printNameScore();
-        computer.printNameScore();
         run();
     }
 
     public void run(){
         while(GameHelper.checkWinner(player.getScore(), computer.getScore(),this.scoreLimit)){
-            isPisti = false;
             dealerCounter = 0;
             gameDeck.shuffleDeck();
             gameDeck.printDeck(); // control
@@ -43,8 +38,6 @@ public class Game {
 
     public void raund(boolean dealerPlayer){
         System.out.println("*****************ROUND BAŞLADI*******************");
-        System.out.println(player.getName() + " Score :" + player.getScore());
-        System.out.println("Computer Score :" + computer.getScore());
         dealerHand(gameTable.getHand());
         gameTable.getHand().printHand();
         System.out.println("---------------------------------------");
@@ -53,8 +46,6 @@ public class Game {
         }else{
             raundComputer();
         }
-        System.out.println("El bitti puan hesaplanacak.");
-        System.out.println(playerLastWin);
         if(playerLastWin){
             GameHelper.winDeckFillandClear(gameTable.getDeck(),player.getDeck());
         }else{
@@ -64,8 +55,9 @@ public class Game {
         computer.setScore(computer.getScore()+GameHelper.scoreCal(computer.getDeck()));
         player.getDeck().getDeck().clear();
         computer.getDeck().getDeck().clear();
-
-        System.out.println("ROUND BİTTİ GÜNCEL PUANLAR:" +player.getName() + player.getScore() + " Compıter :"+  computer.getScore());
+        System.out.println("--------------ROUND SONU PUAN DURUMU-----------");
+        player.printNameScore();
+        computer.printNameScore();
     }
 
     public void raundComputer(){ // dealer computer sonra yazılacak.
@@ -92,17 +84,20 @@ public class Game {
                                 playerLastWin = true;
                             }
                             player.getHand().removeCard(selectCardPlayer);
+                            gameTable.getDeck().printLastCard();
                             break;
                         }catch (Exception e){
                             System.out.println("Hatalı kart seçtiniz lütfen tekrar deneyiniz.");
                         }
                     }
+                    selectCardComputer = computer.computerSelectCardIndex();
                     System.out.println("Seçilen kart : " + computer.getHand().getCard(selectCardComputer));
                     gameTable.getDeck().addCard(computer.getHand().getCard(selectCardComputer));
                     if(GameHelper.winCheck(gameTable.getDeck(),computer.getHand().getCard(selectCardComputer), gameTable.getHand(),computer)){
                         playerLastWin = false;
                     }
                     computer.getHand().removeCard(selectCardComputer);
+                    gameTable.getDeck().printLastCard();
 
                 }
                 else{

@@ -26,7 +26,4 @@ public class Hand {
         return hand;
     }
 
-    public void setHand(ArrayList<Integer> hand) {
-        this.hand = hand;
-    }
 }

@@ -30,10 +30,6 @@ public class Deck {
         return deck;
     }
 
-    public void setDeck(List<Integer> deck) {
-        this.deck = deck;
-    }
-
     public void printDeck(){
         System.out.println(deck);
     }
@@ -45,4 +41,14 @@ public class Deck {
     public void addCard(int card){
         deck.add(card);
     }
+
+    public void printLastCard(){
+        try {
+            System.out.println("Yerdeki Son Kart :" + deck.get(deckSize()-1) + "Yerdeki Kart Sayısı :" + deckSize());
+        }catch (Exception e){
+            System.out.println("---Yerde Kart Yok----");
+        }
+
+    }
+
 }

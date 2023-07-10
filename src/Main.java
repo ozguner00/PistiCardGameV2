@@ -2,6 +2,6 @@
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        Game game = new Game(100,"ozguner00");
+        Game game = new Game(40,"ozguner00");
     }
 }
