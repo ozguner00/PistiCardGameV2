@@ -42,13 +42,18 @@ public class Deck {
         deck.add(card);
     }
 
-    public void printLastCard(){
+    public void printLastCard(Hand hand){
         try {
-            System.out.println("Yerdeki Son Kart :" + deck.get(deckSize()-1) + "Yerdeki Kart Sayısı :" + deckSize());
+            System.out.println("Yerdeki Son Kart :" + deck.get(deckSize()-1 ) + " Yerdeki Kart Sayısı :" + (deckSize()+ hand.handSize()));
         }catch (Exception e){
             System.out.println("---Yerde Kart Yok----");
         }
 
+    }
+
+    public int getLastCard(){
+        if(this.getDeck().size()>0) return this.getDeck().get(this.getDeck().size()-1);
+        return -1;
     }
 
 }

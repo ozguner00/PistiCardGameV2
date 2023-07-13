@@ -3,6 +3,7 @@ public class Computer extends Player{
     private String name = "Computer";
     private Deck deck = new Deck();
     private Hand hand = new Hand();
+    private Deck wiewDeck = new Deck();
 
    /* private List<Integer> probabilityList = new ArrayList<Integer>();
     private HashMap<Integer,Double> probabilityMap= new HashMap<Integer,Double>();
@@ -34,8 +35,26 @@ public class Computer extends Player{
         return hand;
     }
 
-    public int computerSelectCardIndex(){
+    public Deck getWiewDeck() {
+        return wiewDeck;
+    }
+
+    public void addWiewDeck(int card){
+        this.wiewDeck.getDeck().add(card);
+    }
+
+    public int computerSelectCardIndex(int lastCard,int scoreLimit, int dealerCounter){
+
+        if(lastCard == -1){ // yerde kart yoksa
+            return ComputerHelper.probabilityCal(this.wiewDeck,this.getHand());
+        }else if(ComputerHelper.checkEqualIndex(this.getHand(),lastCard) != -1) { // eşit kartım var mı
+            return ComputerHelper.checkEqualIndex(this.getHand(),lastCard);
+        }else if(ComputerHelper.hasJoker(this.getHand()) && ComputerHelper.isPlayJoker(dealerCounter)){ // jokerim var ve oynamalı mıym ?
+            return ComputerHelper.jokerIndex(this.getHand());
+        }
 
         return 0;
     }
+
+
 }
