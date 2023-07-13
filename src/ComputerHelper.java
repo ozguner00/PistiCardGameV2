@@ -49,8 +49,34 @@ public class ComputerHelper {
         return index;
     }
 
-    public static boolean isPlayJoker(int dealerCounter){
-        if(dealerCounter < 29)  return true;
+    public static boolean isPlayJokerFirstly(int dealerCounter){
+        if(dealerCounter < 21)  return true;
         return false;
     }
+
+    public static boolean isPlayJoker(){
+        //Yerdeki puan sayısı(kart sayısı da +3 puan ihtimali olarak eklenebilir.) ör : yerdeki kartları alınca +3 puan kazanma olasılığı garanti +3
+        //garanti değil ama yüksekse +2 gibi
+
+        return false;
+    }
+
+    public static boolean isPlayerJoker(){
+        //yerde çok puan varsa ve karşısı joker oynamadıysa false
+        //puan yoksa olasılık hesabı yapılır winable ile garanti oyun mu standart mı riskli mi tartışılır.
+        //true dönerse ve winable 0-1 ise joker ilk fırsatta oynanır. winable -1 ise riskli oyuna bakılır.
+
+        //false ise ve winable 1 dğeilse joker pisti ihtimalini kovalar.//elde çıkmamış kart sona bırakılır pisti iiçin.
+        //pisti ihtimali düşükse last card olarak oynanır.
+
+        return false;
+    }
+
+    public int winable(){
+        //0-1-(-1) değerleri alır.
+
+
+        return 0; // default game
+    }
+
 }

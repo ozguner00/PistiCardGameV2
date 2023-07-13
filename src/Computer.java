@@ -49,9 +49,15 @@ public class Computer extends Player{
             return ComputerHelper.probabilityCal(this.wiewDeck,this.getHand());
         }else if(ComputerHelper.checkEqualIndex(this.getHand(),lastCard) != -1) { // eşit kartım var mı
             return ComputerHelper.checkEqualIndex(this.getHand(),lastCard);
-        }else if(ComputerHelper.hasJoker(this.getHand()) && ComputerHelper.isPlayJoker(dealerCounter)){ // jokerim var ve oynamalı mıym ?
+        }else if(ComputerHelper.hasJoker(this.getHand()) && ComputerHelper.isPlayJokerFirstly(dealerCounter)){ // joker ilk 2 turda hesap yapmadan oynanıyor.
             return ComputerHelper.jokerIndex(this.getHand());
         }
+        /* winable boolean veya int 0-1-(-1) geride, önce veya standart olarak 3 farklı oynanış eklenebilir.
+
+        *
+        *
+        *
+        * */
 
         return 0;
     }

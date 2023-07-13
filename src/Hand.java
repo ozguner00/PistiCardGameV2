@@ -4,7 +4,10 @@ public class Hand {
     private ArrayList<Integer> hand = new ArrayList<>();
 
     public void printHand(){
-        System.out.println(hand);
+        for(int card : hand){
+            System.out.print(card%13 + " - " );
+        }
+        System.out.println();
     }
     public int handSize(){
         return hand.size();

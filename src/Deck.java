@@ -44,7 +44,7 @@ public class Deck {
 
     public void printLastCard(Hand hand){
         try {
-            System.out.println("Yerdeki Son Kart :" + deck.get(deckSize()-1 ) + " Yerdeki Kart Sayısı :" + (deckSize()+ hand.handSize()));
+            System.out.println("Yerdeki Son Kart :" + (deck.get(deckSize()-1) %13 ) + " Yerdeki Kart Sayısı :" + (deckSize()+ hand.handSize()));
         }catch (Exception e){
             System.out.println("---Yerde Kart Yok----");
         }
