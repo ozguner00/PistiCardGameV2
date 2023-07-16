@@ -30,6 +30,24 @@ public class ComputerHelper {
         }
     }
 
+    public static int probabilityCalNegative(Deck wiewDeck,Hand hand){
+        wiewArrFill(wiewDeck);
+
+        int index = 0;
+        int min = 4;
+        for(int cardI = 0; cardI<hand.handSize(); cardI++){
+            int card = hand.getCard(cardI);
+            if(wiewDeckArr[card%13] < min && card%13 != 11){
+                index = cardI;
+                min = wiewDeckArr[card%13];
+            }
+        }
+        /*System.out.println("-----------------------------------");
+        for(int i : wiewDeckArr){
+            System.out.print(i + " - ");
+        }*/
+        return index;
+    }
     public static int probabilityCal(Deck wiewDeck,Hand hand){
         wiewArrFill(wiewDeck);
 
@@ -72,9 +90,12 @@ public class ComputerHelper {
         return false;
     }
 
-    public int winable(){
-        //0-1-(-1) değerleri alır.
-
+    public static int winable(int playerScore,int computerScore,int scoreLimit){
+        if((computerScore >= playerScore+20 || computerScore >= scoreLimit-16) && playerScore <= scoreLimit-16){
+            return 1;
+        }else if((playerScore >= computerScore+20 || playerScore >= scoreLimit-16) && computerScore <= scoreLimit-16){
+            return -1;
+        }
 
         return 0; // default game
     }

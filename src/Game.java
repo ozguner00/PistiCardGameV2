@@ -101,7 +101,7 @@ public class Game {
                             System.out.println("Hatalı kart seçtiniz lütfen tekrar deneyiniz.");
                         }
                     }
-                    selectCardComputer = computer.computerSelectCardIndex(gameTable.getDeck().getLastCard(),scoreLimit,dealerCounter);
+                    selectCardComputer = computer.computerSelectCardIndex(gameTable.getDeck().getLastCard(),scoreLimit,dealerCounter,player.getScore());
                     //System.out.println("Seçilen kart : " + computer.getHand().getCard(selectCardComputer));
                     gameTable.getDeck().addCard(computer.getHand().getCard(selectCardComputer));
                     if(GameHelper.winCheck(gameTable.getDeck(),computer.getHand().getCard(selectCardComputer), gameTable.getHand(),computer)){
